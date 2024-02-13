@@ -1,0 +1,33 @@
+{
+  "name": "thistogram",
+  "version": "1.0.0",
+  "description": "A simple text based histogram generator",
+  "type": "module",
+  "module": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "vitest run",
+    "run:samples": "cd samples && pnpm i && pnpm run:samples",
+    "update-readme": "pnpm run:samples && inject-markdown README.md"
+  },
+  "keywords": [
+    "histogram",
+    "Unicode"
+  ],
+  "author": "Street Side Software",
+  "license": "MIT",
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.2",
+    "inject-markdown": "^3.0.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  },
+  "files": [
+    "dist/**/*.js",
+    "!**/*.test.*",
+    "!**/*.map.*"
+  ]
+}
