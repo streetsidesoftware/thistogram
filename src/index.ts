@@ -79,12 +79,18 @@ export function histogram(data: Data, options?: HistogramOptions): string {
         type: chartType = 'bar',
         headers,
     } = { ...options };
-    const { boxSymbols = defaultDrawOptions.boxSymbols, histoChars = defaultDrawOptions.histoChars } = { ...drawOptionsParam };
+    const { boxSymbols = defaultDrawOptions.boxSymbols, histoChars = defaultDrawOptions.histoChars } = {
+        ...drawOptionsParam,
+    };
 
     const showMinMax = chartType === 'point-min-max' && showValues;
 
-    const [headerLabel = '', headerValue = 'Val', headerMin = (showMinMax && 'Min') || '', headerMax = (showMinMax && 'Max') || ''] =
-        headers ?? ['', '', '', ''];
+    const [
+        headerLabel = '',
+        headerValue = 'Val',
+        headerMin = (showMinMax && 'Min') || '',
+        headerMax = (showMinMax && 'Max') || '',
+    ] = headers ?? ['', '', '', ''];
 
     const verticalBar = boxSymbols[BoxSymbol.vertical];
     const horizontalBar = boxSymbols[BoxSymbol.horizontal];
@@ -94,14 +100,20 @@ export function histogram(data: Data, options?: HistogramOptions): string {
     const labels = data.map(([label]) => String(label));
     const needMinMaxValues = chartType === 'point-min-max';
     const minValues = needMinMaxValues ? data.map(([, , min]) => min).filter((v): v is number => v !== undefined) : [];
-    const maxValues = needMinMaxValues ? data.map(([, , , max]) => max).filter((v): v is number => v !== undefined) : [];
+    const maxValues = needMinMaxValues
+        ? data.map(([, , , max]) => max).filter((v): v is number => v !== undefined)
+        : [];
     const allValues = [...values, ...minValues, ...maxValues];
     const maxGraphValue = max ?? Math.max(...allValues);
     const minGraphValue = min ?? Math.min(0, ...allValues);
     const range = maxGraphValue - minGraphValue || 1;
 
     const valueToString = (value: number | undefined) =>
-        value === undefined ? '' : significantDigits !== undefined ? value.toFixed(significantDigits) : value.toString();
+        value === undefined
+            ? ''
+            : significantDigits !== undefined
+              ? value.toFixed(significantDigits)
+              : value.toString();
     const valuesToString = (values: number[]) => values.map(valueToString);
     const calcColLabelLength = (label: string | undefined, values: string[]) =>
         Math.min(Math.max(sLen(label), ...values.map(sLen)), maxColumnWidth);
@@ -114,7 +126,8 @@ export function histogram(data: Data, options?: HistogramOptions): string {
 
     const maxBarWidth = width - colWidths.reduce((a, b) => a + b, 0) - colWidths.length * 3 + 2;
 
-    const barValue = (value: number) => (Math.max(Math.min(value, maxGraphValue), minGraphValue) - minGraphValue) / range;
+    const barValue = (value: number) =>
+        (Math.max(Math.min(value, maxGraphValue), minGraphValue) - minGraphValue) / range;
     const colSep = ` ${verticalBar} `;
     const headerSep = `${horizontalBar}${crossBar}${horizontalBar}`;
 
@@ -124,16 +137,16 @@ export function histogram(data: Data, options?: HistogramOptions): string {
             chartType === 'bar'
                 ? bar(barValue(value), maxBarWidth, ' ', histoChars)
                 : chartType === 'point'
-                ? point(barValue(value), maxBarWidth, ' ')
-                : chartType === 'point-min-max'
-                ? pointMinMax(
-                      barValue(value),
-                      minVal !== undefined ? barValue(minVal) : undefined,
-                      maxVal !== undefined ? barValue(maxVal) : undefined,
-                      maxBarWidth,
-                      ' '
-                  )
-                : '';
+                  ? point(barValue(value), maxBarWidth, ' ')
+                  : chartType === 'point-min-max'
+                    ? pointMinMax(
+                          barValue(value),
+                          minVal !== undefined ? barValue(minVal) : undefined,
+                          maxVal !== undefined ? barValue(maxVal) : undefined,
+                          maxBarWidth,
+                          ' ',
+                      )
+                    : '';
 
         const cols = [
             formatColValue(valueToString(value), colWidthValue, true),
@@ -226,7 +239,7 @@ export function pointMinMax(
     maxVal: number | undefined,
     width: number,
     padding = ' ',
-    symbols: Readonly<string[]> = valueMinMaxSymbols
+    symbols: Readonly<string[]> = valueMinMaxSymbols,
 ): string {
     const line = [...padding.repeat(width)];
     const val = calc(value, width);

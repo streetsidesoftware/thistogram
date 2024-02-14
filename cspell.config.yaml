@@ -1,8 +1,13 @@
-version: "0.2"
-ignorePaths: []
+version: '0.2'
+ignorePaths:
+  - node_modules
+  - coverage
+  - dist
+  - pnpm-lock.yaml
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - coverallsapp
   - histo
   - thistogram
 ignoreWords: []
