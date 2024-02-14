@@ -12,6 +12,11 @@ on:
       - 'src/**'
       - '.github/workflows/test.yml'
   pull_request:
+    paths:
+      - '/package.json'
+      - pnpm-lock.yaml
+      - 'src/**'
+      - '.github/workflows/test.yml'
 
 jobs:
   test-node-versions:
