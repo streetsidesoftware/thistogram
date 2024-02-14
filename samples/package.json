@@ -1,13 +1,13 @@
 {
-    "name": "thistogram-samples",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "run:samples": "pnpm run:temperature && pnpm run:histogram",
-        "run:histogram": "node histogram.js > ../static/histogram.txt",
-        "run:temperature": "node temperature.js > ../static/temperature.txt"
-    },
-    "dependencies": {
-        "thistogram": "link:.."
-    }
+  "name": "thistogram-samples",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "run:samples": "pnpm run:temperature && pnpm run:histogram",
+    "run:histogram": "node histogram.js > ../static/histogram.txt",
+    "run:temperature": "node temperature.js > ../static/temperature.txt"
+  },
+  "dependencies": {
+    "thistogram": "link:.."
+  }
 }
