@@ -1,6 +1,6 @@
 # Thistogram
 
-A simple text based histogram generator.
+A simple text based histogram and chart generator.
 
 ## Usage
 
