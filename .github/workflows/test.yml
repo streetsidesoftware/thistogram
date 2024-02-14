@@ -6,6 +6,11 @@ name: Test
 on:
   workflow_dispatch:
   push:
+    paths:
+      - '/package.json'
+      - pnpm-lock.yaml
+      - 'src/**'
+      - '.github/workflows/test.yml'
   pull_request:
 
 jobs:
