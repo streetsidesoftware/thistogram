@@ -20,7 +20,7 @@
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
     "spell": "cspell --no-progress .",
-    "run:samples": "cd samples && pnpm i && pnpm run:samples",
+    "run:samples": "cd samples && pnpm add .. && pnpm run:samples",
     "update-readme": "pnpm run:samples && inject-markdown README.md"
   },
   "keywords": [
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@eslint/js": "^8.56.0",
     "@tsconfig/node18": "^18.2.2",
-    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitest/coverage-istanbul": "^1.2.2",
     "cspell": "^8.3.2",

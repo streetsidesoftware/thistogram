@@ -12,7 +12,7 @@ devDependencies:
     specifier: ^18.2.2
     version: 18.2.2
   '@typescript-eslint/eslint-plugin':
-    specifier: ^7.0.1
+    specifier: ^7.0.0
     version: 7.0.1(@typescript-eslint/parser@6.21.0)(eslint@8.56.0)(typescript@5.3.3)
   '@typescript-eslint/parser':
     specifier: ^6.21.0
