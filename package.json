@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple text based histogram generator",
   "type": "module",
+  "packageManager": "pnpm@8.15.2",
   "module": "dist/index.js",
   "exports": {
     ".": "./dist/index.js"
