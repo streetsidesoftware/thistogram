@@ -1,4 +1,4 @@
-name: Coverage
+name: ' 🧪 Coverage'
 on:
   workflow_dispatch:
   pull_request:
