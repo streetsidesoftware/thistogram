@@ -32,9 +32,9 @@
   "devDependencies": {
     "@eslint/js": "^8.56.0",
     "@tsconfig/node18": "^18.2.2",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
-    "@vitest/coverage-istanbul": "^1.2.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitest/coverage-istanbul": "^1.2.2",
     "cspell": "^8.3.2",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
