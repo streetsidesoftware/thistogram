@@ -15,7 +15,7 @@ const data = [
     ['Dec', 3, 2, 7],
 ];
 const graph = histogram(data, {
-    width: 80,
+    width: 70,
     maxLabelWidth: 5,
     title: 'Temperature Degrees C',
     type: 'point-min-max',
