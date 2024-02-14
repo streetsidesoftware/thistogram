@@ -44,7 +44,6 @@ jobs:
           title: 'Workflow Bot -- Update README.md Examples'
           path: |
             README.md
-            static/**
 
       - name: PR
         uses: streetsidesoftware/actions/.github/actions/pr@v1
