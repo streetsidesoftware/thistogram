@@ -1,0 +1,50 @@
+name: Coverage
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '/*.js'
+      - '**/*.ts'
+      - '*-lock.yaml'
+      - 'package.json'
+      - '.github/workflows/coverage.yml'
+      - '!docs/**'
+      - '!website/**'
+  push:
+    branches:
+      - main
+    paths:
+      - '**/package.json'
+      - '**/*-lock.yaml'
+      - '**/*.ts'
+      - '**/*.js'
+      - '.github/workflows/coverage.yml'
+      - '!docs/**'
+      - '!website/**'
+
+permissions:
+  contents: read
+
+jobs:
+  coverage:
+    permissions:
+      checks: write # for coverallsapp/github-action to create new checks
+      contents: read # for actions/checkout to fetch code
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: build
+        run: |
+          pnpm build
+
+      - run: pnpm run coverage
+
+      - name: Upload coverage Coveralls
+        uses: coverallsapp/github-action@3dfc5567390f6fa9267c0ee9c251e4c8c3f18949 # 2.2.3
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@e0b68c6749509c5f83f984dd99a76a1c1a231044 # v3

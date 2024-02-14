@@ -1,7 +1,7 @@
 {
   "name": "thistogram",
   "version": "1.0.0",
-  "description": "A simple text based histogram generator",
+  "description": "A simple text based histogram and chart generator",
   "type": "module",
   "packageManager": "pnpm@8.15.2",
   "module": "dist/index.js",
