@@ -6,12 +6,5 @@ settings:
 
 dependencies:
   thistogram:
-    specifier: file:../
-    version: file:..
-
-packages:
-
-  file:..:
-    resolution: {directory: .., type: directory}
-    name: thistogram
-    dev: false
+    specifier: link:..
+    version: link:..
