@@ -14,7 +14,7 @@ describe('histogram', () => {
             Numbers
             one   ┃██████▋             ┃ 1
             two   ┃█████████████▎      ┃ 2
-            three ┃████████████████████┃ 3`.replace(/^\s+/gm, '')
+            three ┃████████████████████┃ 3`.replace(/^\s+/gm, ''),
         );
     });
 
@@ -31,7 +31,7 @@ describe('histogram', () => {
             minus ┃▏                 ┃  -1
             2.5   ┃███████████████▊  ┃ 2.5
             three ┃██████████████████┃   3
-            one   ┃█████████         ┃   1`.replace(/^\s+/gm, '')
+            one   ┃█████████         ┃   1`.replace(/^\s+/gm, ''),
         );
     });
 
@@ -59,13 +59,15 @@ describe('histogram', () => {
             16 ┃████████▎          ┃  0.34
             17 ┃█████▌             ┃  0.17
             18 ┃██▊                ┃  0.00
-            19 ┃▏                  ┃ -0.17`.replace(/^\s+/gm, '')
+            19 ┃▏                  ┃ -0.17`.replace(/^\s+/gm, ''),
         );
     });
 
     test('Point graph', () => {
         const data = sampleData(40);
-        expect(histogram(data, { width: 80, maxLabelWidth: 8, significantDigits: 2, title: 'Sine', type: 'point' })).toBe(
+        expect(
+            histogram(data, { width: 80, maxLabelWidth: 8, significantDigits: 2, title: 'Sine', type: 'point' }),
+        ).toBe(
             `\
             Sine
             0  ┃                                 ●                                   ┃  0.00
@@ -107,7 +109,7 @@ describe('histogram', () => {
             36 ┃                                 ●                                   ┃ -0.00
             37 ┃                                       ●                             ┃  0.17
             38 ┃                                             ●                       ┃  0.34
-            39 ┃                                                  ●                  ┃  0.50`.replace(/^\s+/gm, '')
+            39 ┃                                                  ●                  ┃  0.50`.replace(/^\s+/gm, ''),
         );
     });
 
@@ -133,7 +135,7 @@ describe('histogram', () => {
                 title: 'Temperature Degrees C',
                 type: 'point-min-max',
                 headers: ['Month', 'Avg', 'Min', 'Max'],
-            })
+            }),
         ).toBe(
             `\
             Temperature Degrees C
@@ -150,7 +152,7 @@ describe('histogram', () => {
             Sep   ┃                        ┣━━━━━━━━●━━━━━━━━━━━┫          ┃  14 ┃  10 ┃  19
             Oct   ┃              ┣━━━━━━━━━●━━━━━━━━━━━┫                   ┃  10 ┃   6 ┃  15
             Nov   ┃          ┣━━━●━━━━━━━━━┫                               ┃   6 ┃   4 ┃  10
-            Dec   ┃     ┣━●━━━━━━━━━┫                                      ┃   3 ┃   2 ┃   7`.replace(/^\s+/gm, '')
+            Dec   ┃     ┣━●━━━━━━━━━┫                                      ┃   3 ┃   2 ┃   7`.replace(/^\s+/gm, ''),
         );
     });
 });
