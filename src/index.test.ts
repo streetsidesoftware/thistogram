@@ -155,6 +155,74 @@ describe('histogram', () => {
             Dec   ┃     ┣━●━━━━━━━━━┫                                      ┃   3 ┃   2 ┃   7`.replace(/^\s+/gm, ''),
         );
     });
+
+    test.only('point-min-max temperature with custom headers', () => {
+        const d = `
+            AdaDoom3/AdaDoom3              ┃   1.012 ┃ 0.991 ┃ 1.009
+            alexiosc/megistos              ┃   0.996 ┃ 0.963 ┃ 1.037
+            apollographql/apollo-server    ┃   1.031 ┃ 0.975 ┃ 1.047
+            aspnetboilerplate/aspnetboiler ┃   1.025 ┃ 0.999 ┃ 1.001
+            aws-amplify/docs               ┃    1.05 ┃ 0.977 ┃ 1.023
+            Azure/azure-rest-api-specs     ┃   1.031 ┃ 0.986 ┃ 1.014
+            bitjson/typescript-starter     ┃   1.028 ┃ 0.987 ┃ 1.013
+            caddyserver/caddy              ┃   0.993 ┃ 0.988 ┃ 1.012
+            canada-ca/open-source-logiciel ┃   1.103 ┃ 0.996 ┃ 1.004
+            chef/chef                      ┃   0.983 ┃  0.99 ┃  1.01
+            django/django                  ┃   0.986 ┃ 0.991 ┃ 1.009
+            eslint/eslint                  ┃   0.891 ┃ 0.913 ┃ 1.087
+            exonum/exonum                  ┃   1.021 ┃  0.99 ┃  1.01
+            gitbucket/gitbucket            ┃   1.092 ┃ 0.996 ┃ 1.004
+            googleapis/google-cloud-cpp    ┃   0.995 ┃ 0.938 ┃ 1.055
+            graphql/express-graphql        ┃   0.982 ┃ 0.994 ┃ 1.005
+        `;
+
+        const data: Data = d
+            .split('\n')
+            .map((a) => a.trim())
+            .filter((a) => !!a)
+            .map((line) => line.split('┃').map((a) => a.trim()))
+            .map(([label, value, min, max]) => [label, parseFloat(value), parseFloat(min), parseFloat(max)] as const);
+
+        const maxVal = data.reduce((curr, [, value, min, max]) => Math.max(curr, value, min ?? 1, max ?? 1), 1);
+        const minVal = data.reduce((curr, [, value, min, max]) => Math.min(curr, value, min ?? 1, max ?? 1), 1);
+        const maxDiff = Math.max(Math.abs(maxVal - 1), Math.abs(minVal - 1));
+
+        expect(
+            histogram(data, {
+                width: 100,
+                maxLabelWidth: 30,
+                title: 'Performance Deviation',
+                type: 'point-min-max',
+                headers: ['Repo', 'Val', 'Min', 'Max'],
+                max: 1 + maxDiff * 1.1,
+                min: 1 - maxDiff * 1.1,
+            }),
+        ).toBe(
+            `\
+            Performance Deviation
+            Repo                           ┃                                             ┃   Val ┃   Min ┃   Max
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━
+            AdaDoom3/AdaDoom3              ┃                    ┣━━━●                    ┃ 1.012 ┃ 0.991 ┃ 1.009
+            alexiosc/megistos              ┃               ┣━━━━━●━━━━━━━┫               ┃ 0.996 ┃ 0.963 ┃ 1.037
+            apollographql/apollo-server    ┃                 ┣━━━━━━━━━━●━━┫             ┃ 1.031 ┃ 0.975 ┃ 1.047
+            aspnetboilerplate/aspnetboiler ┃                      ┫    ●                 ┃ 1.025 ┃ 0.999 ┃ 1.001
+            aws-amplify/docs               ┃                  ┣━━━━━━━┫    ●             ┃  1.05 ┃ 0.977 ┃ 1.023
+            Azure/azure-rest-api-specs     ┃                   ┣━━━━━┫  ●                ┃ 1.031 ┃ 0.986 ┃ 1.014
+            bitjson/typescript-starter     ┃                    ┣━━━┫  ●                 ┃ 1.028 ┃ 0.987 ┃ 1.013
+            caddyserver/caddy              ┃                    ┣●━━┫                    ┃ 0.993 ┃ 0.988 ┃ 1.012
+            canada-ca/open-source-logiciel ┃                     ┣━┫                 ●   ┃ 1.103 ┃ 0.996 ┃ 1.004
+            chef/chef                      ┃                   ●┣━━━┫                    ┃ 0.983 ┃  0.99 ┃  1.01
+            django/django                  ┃                   ●┣━━━┫                    ┃ 0.986 ┃ 0.991 ┃ 1.009
+            eslint/eslint                  ┃  ●   ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫      ┃ 0.891 ┃ 0.913 ┃ 1.087
+            exonum/exonum                  ┃                    ┣━━━┫ ●                  ┃ 1.021 ┃  0.99 ┃  1.01
+            gitbucket/gitbucket            ┃                     ┣━┫               ●     ┃ 1.092 ┃ 0.996 ┃ 1.004
+            googleapis/google-cloud-cpp    ┃           ┣━━━━━━━━━●━━━━━━━━━━┫            ┃ 0.995 ┃ 0.938 ┃ 1.055
+            graphql/express-graphql        ┃                   ● ┣━┫                     ┃ 0.982 ┃ 0.994 ┃ 1.005`.replace(
+                /^\s+/gm,
+                '',
+            ),
+        );
+    });
 });
 
 function sampleData(num: number, scale = 1, step = 5): Data {
