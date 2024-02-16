@@ -1,4 +1,4 @@
-version: '0.2'
+version: "0.2"
 ignorePaths:
   - node_modules
   - coverage
@@ -7,8 +7,18 @@ ignorePaths:
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - alexiosc
+  - apollographql
+  - aspnetboiler
+  - aspnetboilerplate
+  - bitjson
+  - caddyserver
   - coverallsapp
+  - exonum
+  - gitbucket
   - histo
+  - logiciel
+  - megistos
   - thistogram
 ignoreWords: []
 import: []
