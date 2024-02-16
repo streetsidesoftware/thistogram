@@ -156,7 +156,7 @@ describe('histogram', () => {
         );
     });
 
-    test.only('point-min-max temperature with custom headers', () => {
+    test('point-min-max temperature with custom headers', () => {
         const d = `
             AdaDoom3/AdaDoom3              ┃   1.012 ┃ 0.991 ┃ 1.009
             alexiosc/megistos              ┃   0.996 ┃ 0.963 ┃ 1.037
