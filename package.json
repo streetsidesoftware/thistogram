@@ -33,7 +33,7 @@
     "@eslint/js": "^8.56.0",
     "@tsconfig/node18": "^18.2.2",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
-    "@typescript-eslint/parser": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.2",
     "@vitest/coverage-istanbul": "^1.2.2",
     "cspell": "^8.3.2",
     "eslint": "^8.56.0",
