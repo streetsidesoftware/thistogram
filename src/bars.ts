@@ -14,8 +14,7 @@ export function simpleHistogram(
     max?: number,
     barChars: string[] = histoCharsBottomToTop,
 ): string {
-    const minVal = min ?? Math.min(...data);
-    const maxVal = max ?? Math.max(...data);
+    const [minVal, maxVal] = minMaxRange(data, min, max);
     const range = maxVal - minVal || 1;
     const lenBarChars = barChars.length;
     const scale = lenBarChars / range;
@@ -95,4 +94,12 @@ export function plotPointRelativeToStandardDeviation(
     plot[f(diff)] = stPlotChars.point;
 
     return plot.join('');
+}
+
+function minMaxRange(values: readonly number[], min?: number, max?: number): Readonly<[number, number]> {
+    const minVal = min ?? Math.min(...values);
+    const maxVal = max ?? Math.max(...values);
+    const adj = (maxVal - minVal) * 0.05;
+    const r = [min ?? minVal - adj, max ?? maxVal + adj] as const;
+    return r;
 }
