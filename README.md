@@ -127,13 +127,20 @@ function calcAvg(arr) {
 
 function table() {
     const lines = [];
+    const allTemps = data.flatMap(([, d]) => d);
+    const tempMax = Math.max(...allTemps);
+    const tempMin = Math.min(...allTemps);
+    const tempRange = tempMax - tempMin;
+    const margin = tempRange * 0.1;
+    const graphMin = Math.floor(tempMin - margin);
+    const graphMax = Math.ceil(tempMax + margin);
     lines.push('| Month | Avg |  Min |  Max | Graph |');
     lines.push('|-------|----:|-----:|-----:|-------|');
     for (const [month, monthData] of data) {
         const avg = calcAvg(monthData);
         const min = Math.min(...monthData);
         const max = Math.max(...monthData);
-        const histo = simpleHistogram(monthData, 0, 25);
+        const histo = simpleHistogram(monthData, graphMin, graphMax);
         lines.push(
             `| ${month} | ${avg.toFixed(1)} | ${min} | ${max} | \`${histo}\` |`,
         );
@@ -142,11 +149,7 @@ function table() {
     lines.push(
         'The table above shows the average, minimum, and maximum temperature for each month.',
     );
-    const trendGraph = simpleHistogram(
-        data.flatMap(([, d]) => d),
-        0,
-        25,
-    );
+    const trendGraph = simpleHistogram(allTemps, graphMin, graphMax);
     lines.push('');
     lines.push(`Weekly Trend: \`${trendGraph}\``);
     return lines.join('\n');
@@ -163,14 +166,14 @@ Result:
 
 | Month |  Avg | Min | Max | Graph  |
 | ----- | ---: | --: | --: | ------ |
-| jan   |  8.3 |   5 |  12 | `▂▃▃▄` |
-| feb   | 11.5 |   8 |  15 | `▅▄▃▅` |
-| mar   | 12.5 |   9 |  16 | `▅▄▃▆` |
+| jan   |  8.3 |   5 |  12 | `▁▂▃▄` |
+| feb   | 11.5 |   8 |  15 | `▄▃▂▅` |
+| mar   | 12.5 |   9 |  16 | `▅▄▃▅` |
 | apr   | 18.0 |  15 |  22 | `▆▅█▆` |
 
 The table above shows the average, minimum, and maximum temperature for each month.
 
-Weekly Trend: `▂▃▃▄▅▄▃▅▅▄▃▆▆▅█▆`
+Weekly Trend: `▁▂▃▄▄▃▂▅▅▄▃▅▆▅█▆`
 
 <!--- @@inject-end: static/table.md --->
 
