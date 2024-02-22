@@ -12,17 +12,17 @@ A simple text based histogram and chart generator.
 import { histogram } from 'thistogram';
 
 const data = [
-  ['one', 1],
-  ['two', 2],
-  ['three', 3],
-  ['four', 4],
-  ['2.5', 2.5]
+    ['one', 1],
+    ['two', 2],
+    ['three', 3],
+    ['four', 4],
+    ['2.5', 2.5],
 ];
 const hist = histogram(data, {
-  width: 40,
-  maxLabelWidth: 5,
-  title: 'Numbers',
-  headers: ['Label', 'Value']
+    width: 40,
+    maxLabelWidth: 5,
+    title: 'Numbers',
+    headers: ['Label', 'Value'],
 });
 console.log(hist);
 ```
@@ -48,36 +48,40 @@ four  ┃███████████████████████�
 
 ### Point-Min-Max Chart
 
+Code:
+
 <!--- @@inject: samples/temperature.js --->
 
 ```js
 import { histogram } from 'thistogram';
 
 const data = [
-  ['Jan', 2, 1, 6],
-  ['Feb', 2, 0, 6],
-  ['Mar', 4, 2, 10],
-  ['Apr', 8, 4, 13],
-  ['May', 12, 8, 17],
-  ['Jun', 16, 12, 20],
-  ['Jul', 18, 13, 22],
-  ['Aug', 18, 13, 23],
-  ['Sep', 14, 10, 19],
-  ['Oct', 10, 6, 15],
-  ['Nov', 6, 4, 10],
-  ['Dec', 3, 2, 7]
+    ['Jan', 2, 1, 6],
+    ['Feb', 2, 0, 6],
+    ['Mar', 4, 2, 10],
+    ['Apr', 8, 4, 13],
+    ['May', 12, 8, 17],
+    ['Jun', 16, 12, 20],
+    ['Jul', 18, 13, 22],
+    ['Aug', 18, 13, 23],
+    ['Sep', 14, 10, 19],
+    ['Oct', 10, 6, 15],
+    ['Nov', 6, 4, 10],
+    ['Dec', 3, 2, 7],
 ];
 const graph = histogram(data, {
-  width: 70,
-  maxLabelWidth: 5,
-  title: 'Temperature Degrees C',
-  type: 'point-min-max',
-  headers: ['Month', 'Avg', 'Min', 'Max']
+    width: 70,
+    maxLabelWidth: 5,
+    title: 'Temperature Degrees C',
+    type: 'point-min-max',
+    headers: ['Month', 'Avg', 'Min', 'Max'],
 });
 console.log(graph);
 ```
 
 <!--- @@inject-end: samples/temperature.js --->
+
+Result:
 
 <!--- @@inject: static/temperature.txt --->
 
@@ -100,6 +104,78 @@ Dec   ┃    ┣━●━━━━━━━┫                               ┃
 ```
 
 <!--- @@inject-end: static/temperature.txt --->
+
+### Simple Histogram
+
+Code:
+
+<!--- @@inject: samples/table.js --->
+
+```js
+import { simpleHistogram } from 'thistogram';
+
+const data = [
+    ['jan', [5, 7, 9, 12]],
+    ['feb', [13, 10, 8, 15]],
+    ['mar', [14, 11, 9, 16]],
+    ['apr', [17, 15, 22, 18]],
+];
+
+function calcAvg(arr) {
+    return arr.reduce((a, b) => a + b, 0) / arr.length;
+}
+
+function table() {
+    const lines = [];
+    const allTemps = data.flatMap(([, d]) => d);
+    const tempMax = Math.max(...allTemps);
+    const tempMin = Math.min(...allTemps);
+    const tempRange = tempMax - tempMin;
+    const margin = tempRange * 0.1;
+    const graphMin = Math.floor(tempMin - margin);
+    const graphMax = Math.ceil(tempMax + margin);
+    lines.push('| Month | Avg |  Min |  Max | Graph |');
+    lines.push('|-------|----:|-----:|-----:|-------|');
+    for (const [month, monthData] of data) {
+        const avg = calcAvg(monthData);
+        const min = Math.min(...monthData);
+        const max = Math.max(...monthData);
+        const histo = simpleHistogram(monthData, graphMin, graphMax);
+        lines.push(
+            `| ${month} | ${avg.toFixed(1)} | ${min} | ${max} | \`${histo}\` |`,
+        );
+    }
+    lines.push('');
+    lines.push(
+        'The table above shows the average, minimum, and maximum temperature for each month.',
+    );
+    const trendGraph = simpleHistogram(allTemps, graphMin, graphMax);
+    lines.push('');
+    lines.push(`Weekly Trend: \`${trendGraph}\``);
+    return lines.join('\n');
+}
+
+console.log(table());
+```
+
+<!--- @@inject-end: samples/table.js --->
+
+Result:
+
+<!--- @@inject: static/table.md --->
+
+| Month |  Avg | Min | Max | Graph  |
+| ----- | ---: | --: | --: | ------ |
+| jan   |  8.3 |   5 |  12 | `▁▂▃▄` |
+| feb   | 11.5 |   8 |  15 | `▄▃▂▅` |
+| mar   | 12.5 |   9 |  16 | `▅▄▃▅` |
+| apr   | 18.0 |  15 |  22 | `▆▅█▆` |
+
+The table above shows the average, minimum, and maximum temperature for each month.
+
+Weekly Trend: `▁▂▃▄▄▃▂▅▅▄▃▅▆▅█▆`
+
+<!--- @@inject-end: static/table.md --->
 
 ## Examples
 

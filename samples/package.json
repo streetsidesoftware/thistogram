@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "run:samples": "pnpm run:temperature && pnpm run:histogram",
+    "run:samples": "pnpm run:temperature && pnpm run:histogram && pnpm run:table",
     "run:histogram": "node histogram.js > ../static/histogram.txt",
+    "run:table": "node table.js > ../static/table.md",
     "run:temperature": "node temperature.js > ../static/temperature.txt"
   },
   "dependencies": {
