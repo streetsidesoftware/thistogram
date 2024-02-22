@@ -21,7 +21,7 @@ function table() {
         const max = Math.max(...monthData);
         const histo = simpleHistogram(monthData, 0, 20);
         lines.push(
-            `| ${month} | ${avg.toFixed(1)} | ${min} | ${max} | ${histo} |`,
+            `| ${month} | ${avg.toFixed(1)} | ${min} | ${max} | \`${histo}\` |`,
         );
     }
     return lines.join('\n');

@@ -135,7 +135,7 @@ function table() {
         const max = Math.max(...monthData);
         const histo = simpleHistogram(monthData, 0, 20);
         lines.push(
-            `| ${month} | ${avg.toFixed(1)} | ${min} | ${max} | ${histo} |`,
+            `| ${month} | ${avg.toFixed(1)} | ${min} | ${max} | \`${histo}\` |`,
         );
     }
     return lines.join('\n');
@@ -150,12 +150,12 @@ Result:
 
 <!--- @@inject: static/table.md --->
 
-| Month |  Avg | Min | Max | Graph |
-| ----- | ---: | --: | --: | ----- |
-| jan   |  8.3 |   5 |  12 | ▂▃▄▅  |
-| feb   | 11.5 |   8 |  15 | ▆▄▄▆  |
-| mar   | 12.5 |   9 |  16 | ▆▅▄▇  |
-| apr   | 15.5 |  12 |  19 | ▇▆▅█  |
+| Month |  Avg | Min | Max | Graph  |
+| ----- | ---: | --: | --: | ------ |
+| jan   |  8.3 |   5 |  12 | `▂▃▄▅` |
+| feb   | 11.5 |   8 |  15 | `▆▄▄▆` |
+| mar   | 12.5 |   9 |  16 | `▆▅▄▇` |
+| apr   | 15.5 |  12 |  19 | `▇▆▅█` |
 
 <!--- @@inject-end: static/table.md --->
 
