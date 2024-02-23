@@ -1,7 +1,16 @@
 import { describe, expect, test } from 'vitest';
 
 import type { Data } from './index.js';
-import { barHorizontal, histogram, plotPointRelativeToStandardDeviation, simpleHistogram } from './index.js';
+import {
+    barHorizontal,
+    calcMean,
+    calcMedian,
+    calcStandardDeviation,
+    calcVariance,
+    histogram,
+    plotPointRelativeToStandardDeviation,
+    simpleHistogram,
+} from './index.js';
 
 describe('histogram', () => {
     test('simple', () => {
@@ -231,6 +240,11 @@ describe('api', () => {
         expect(typeof barHorizontal).toBe('function');
         expect(typeof simpleHistogram).toBe('function');
         expect(typeof plotPointRelativeToStandardDeviation).toBe('function');
+        expect(typeof histogram).toBe('function');
+        expect(typeof calcMean).toBe('function');
+        expect(typeof calcMedian).toBe('function');
+        expect(typeof calcStandardDeviation).toBe('function');
+        expect(typeof calcVariance).toBe('function');
     });
 });
 
