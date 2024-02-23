@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/streetsidesoftware/thistogram/compare/v1.1.0...v1.1.1) (2024-02-23)
+
+
+### Bug Fixes
+
+* expose `stats` functions ([#47](https://github.com/streetsidesoftware/thistogram/issues/47)) ([2797a84](https://github.com/streetsidesoftware/thistogram/commit/2797a84149f916d4d882fa668fc5d9a5e2ff7690))
+
 ## [1.1.0](https://github.com/streetsidesoftware/thistogram/compare/v1.0.1...v1.1.0) (2024-02-23)
 
 
