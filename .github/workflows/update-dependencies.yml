@@ -44,6 +44,7 @@ jobs:
       - name: Fix Samples
         run: |
           cd samples
+          pnpm rm thistogram
           pnpm add ..
 
       - name: PR Body
