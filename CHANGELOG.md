@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/streetsidesoftware/thistogram/compare/v1.0.1...v1.1.0) (2024-02-23)
+
+
+### Features
+
+* Support generating single line histograms ([#38](https://github.com/streetsidesoftware/thistogram/issues/38)) ([2fa7108](https://github.com/streetsidesoftware/thistogram/commit/2fa7108a788f3fc209793159a57c766a7450318b))
+
+
+### Bug Fixes
+
+* expose plotPointRelativeToStandardDeviation ([#41](https://github.com/streetsidesoftware/thistogram/issues/41)) ([72f1eb5](https://github.com/streetsidesoftware/thistogram/commit/72f1eb55d17e7dd6dc12e2500587c27a2b561931))
+
 ## [1.0.1](https://github.com/streetsidesoftware/thistogram/compare/v1.0.0...v1.0.1) (2024-02-16)
 
 
