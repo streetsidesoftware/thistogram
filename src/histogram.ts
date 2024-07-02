@@ -26,7 +26,7 @@ export interface HistogramOptions {
     /** The number of significant digits to show in the values. */
     significantDigits?: number;
     /**
-     * The colum headers.
+     * The column headers.
      * The first column is the label, the second is the value, the third is the min value, and the fourth is the max value.
      */
     headers?: string[];
