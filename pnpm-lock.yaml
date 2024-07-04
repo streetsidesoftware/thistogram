@@ -48,8 +48,8 @@ devDependencies:
     specifier: ^12.1.0
     version: 12.1.0(eslint@8.57.0)
   inject-markdown:
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^3.1.0
+    version: 3.1.0
   typescript:
     specifier: ^5.5.3
     version: 5.5.3
@@ -1617,11 +1617,6 @@ packages:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
 
-  /commander@11.1.0:
-    resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
-    engines: {node: '>=16'}
-    dev: true
-
   /commander@12.1.0:
     resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
     engines: {node: '>=18'}
@@ -2777,13 +2772,13 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
-  /inject-markdown@3.0.0:
-    resolution: {integrity: sha512-qKZAdUXlq8KOQAVFXIaVSnUM58Ht6+3ptloCjcqaY7EJoBsoeE3fMBoVF1bymiaX/C1GogBHTFPc8Lnr8ZCjaw==}
+  /inject-markdown@3.1.0:
+    resolution: {integrity: sha512-ZtCOzS36vPy6UfyIJ1Gd9Hump8Psu6U5ooDlLNoNauXmdIwtGh7MZrvibubgUW8HIJU+EuCBZQUNltaoUhKFXg==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
       chalk: 5.3.0
-      commander: 11.1.0
+      commander: 12.1.0
       globby: 14.0.2
       node-fetch: 3.3.2
       remark: 15.0.1
