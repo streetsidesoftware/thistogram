@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@eslint/js':
-    specifier: ^9.10.0
-    version: 9.10.0
+    specifier: ^9.11.1
+    version: 9.11.1
   '@tsconfig/node18':
     specifier: ^18.2.4
     version: 18.2.4
@@ -800,8 +800,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@eslint/js@9.10.0:
-    resolution: {integrity: sha512-fuXtbiP5GWIn8Fz+LWoOMVf/Jxm+aajZYkhi6CuEm4SxymFM+eUWzbO9qXT+L0iCkL5+KGYMCSGxo686H19S1g==}
+  /@eslint/js@9.11.1:
+    resolution: {integrity: sha512-/qu+TWz8WwPWc7/HcIJKi+c+MOm46GdVaSlTTQcaqaL53+GsoA6MxWp5PtTx48qbSP7ylM1Kn7nhvkugfJvRSA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
 
