@@ -44,7 +44,7 @@ jobs:
       - run: pnpm run coverage
 
       - name: Upload coverage Coveralls
-        uses: coverallsapp/github-action@643bc377ffa44ace6394b2b5d0d3950076de9f63 # 2.3.0
+        uses: coverallsapp/github-action@43f11c4e058174f808ee9cd63701b6c42fe3f5e3 # 2.3.2
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4.6.0
