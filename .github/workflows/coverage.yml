@@ -47,6 +47,6 @@ jobs:
         uses: coverallsapp/github-action@773b6d8e80fa7862da56a7664bd747c91255b2e2 # 2.3.5
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@0da7aa657d958d32c117fc47e1f977e7524753c7 # v5.3.0
+        uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # v5.3.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
