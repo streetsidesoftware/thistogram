@@ -183,7 +183,7 @@ function calc(value: number, width: number): number {
     return Math.floor(v * (width - 1) + 0.5);
 }
 
-const valueMinMaxSymbols = [
+export const valueMinMaxSymbols: readonly string[] = [
     '●',
     boxSymbols[BoxSymbol.leftT],
     boxSymbols[BoxSymbol.horizontal],
@@ -222,7 +222,7 @@ export function pointMinMax(
 }
 
 function sLen(s: string | undefined): number {
-    if (s === undefined) return 0;
+    if (!s) return 0;
     return [...s].length;
 }
 

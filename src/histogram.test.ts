@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { type Data, histogram } from './histogram.js';
+import { type Data, histogram, pointMinMax, valueMinMaxSymbols } from './histogram.js';
 
 describe('histogram', () => {
     test('simple', () => {
@@ -223,6 +223,27 @@ describe('histogram', () => {
             ),
         );
     });
+
+    const U = undefined;
+
+    test.each`
+        value  | minVal | maxVal | width | padding | symbols               | expected
+        ${0.5} | ${0}   | ${1}   | ${11} | ${' '}  | ${valueMinMaxSymbols} | ${'┣━━━━●━━━━┫'}
+        ${0.5} | ${0}   | ${1}   | ${11} | ${U}    | ${undefined}          | ${'┣━━━━●━━━━┫'}
+        ${0.5} | ${U}   | ${U}   | ${11} | ${'.'}  | ${undefined}          | ${'.....●.....'}
+        ${0.6} | ${0}   | ${1.0} | ${11} | ${' '}  | ${valueMinMaxSymbols} | ${'┣━━━━━●━━━┫'}
+        ${0.6} | ${0}   | ${0.6} | ${11} | ${' '}  | ${valueMinMaxSymbols} | ${'┣━━━━━●    '}
+        ${0.6} | ${0}   | ${0.6} | ${11} | ${'.'}  | ${valueMinMaxSymbols} | ${'┣━━━━━●....'}
+        ${0.6} | ${0.6} | ${1}   | ${11} | ${'.'}  | ${valueMinMaxSymbols} | ${'......●━━━┫'}
+        ${0.5} | ${0.4} | ${0.8} | ${11} | ${'.'}  | ${undefined}          | ${'....┣●━━┫..'}
+    `(
+        'pointMinMax $value, $minVal, $maxVal, $width, $padding, $symbols',
+        ({ value, minVal, maxVal, width, padding, symbols, expected }) => {
+            const r = pointMinMax(value, minVal, maxVal, width, padding, symbols);
+            expect(r.length).toBe(width);
+            expect(r).toBe(expected);
+        },
+    );
 });
 
 function sampleData(num: number, scale = 1, step = 5): Data {
