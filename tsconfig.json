@@ -1,13 +1,26 @@
 {
-    "extends": ["@tsconfig/node18"],
+    "extends": ["@tsconfig/node20"],
     "compilerOptions": {
+        "alwaysStrict": true,
+        "declaration": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "exactOptionalPropertyTypes": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedDeclarations": true,
+        "moduleResolution": "node16",
+        "newLine": "LF",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": false, // This is picked up by eslint
+        "noUnusedParameters": false, // This is picked up by eslint
         "outDir": "dist",
         "rootDir": "src",
+        "skipLibCheck": true,
+        "sourceMap": true,
         "strict": true,
-        "declaration": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true
+        "strictFunctionTypes": true,
+        "strictNullChecks": true
     },
     "include": ["src"]
 }

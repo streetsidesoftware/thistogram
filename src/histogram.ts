@@ -90,14 +90,14 @@ export function histogram(data: Data, options?: HistogramOptions): string {
     const minGraphValue = min ?? Math.min(0, ...allValues);
     const range = maxGraphValue - minGraphValue || 1;
 
-    const valueToString = (value: number | undefined) =>
+    const valueToString = (value: number | undefined): string =>
         value === undefined
             ? ''
             : significantDigits !== undefined
               ? value.toFixed(significantDigits)
               : value.toString();
-    const valuesToString = (values: number[]) => values.map(valueToString);
-    const calcColLabelLength = (label: string | undefined, values: string[]) =>
+    const valuesToString = (values: number[]): string[] => values.map(valueToString);
+    const calcColLabelLength = (label: string | undefined, values: string[]): number =>
         Math.min(Math.max(sLen(label), ...values.map(sLen)), maxColumnWidth);
 
     const colWidthLabel = calcColLabelLength(headerLabel, labels);
@@ -108,7 +108,7 @@ export function histogram(data: Data, options?: HistogramOptions): string {
 
     const maxBarWidth = width - colWidths.reduce((a, b) => a + b, 0) - colWidths.length * 3 + 2;
 
-    const barValue = (value: number) =>
+    const barValue = (value: number): number =>
         (Math.max(Math.min(value, maxGraphValue), minGraphValue) - minGraphValue) / range;
     const colSep = ` ${vLine} `;
     const headerSep = `${hLine}${cross}${hLine}`;
@@ -138,7 +138,7 @@ export function histogram(data: Data, options?: HistogramOptions): string {
         return `${labelValue} ${vLine}${graphLine}${vLine} ${cols.join(colSep)}`;
     });
 
-    function formatHeader() {
+    function formatHeader(): string {
         if (!headers) return '';
         const label = formatColValue(headerLabel, colWidthLabel, false);
         const cols = [
@@ -205,8 +205,8 @@ export function pointMinMax(
     minVal: number | undefined,
     maxVal: number | undefined,
     width: number,
-    padding = ' ',
-    symbols: Readonly<string[]> = valueMinMaxSymbols,
+    padding: string = ' ',
+    symbols: readonly string[] = valueMinMaxSymbols,
 ): string {
     const line = [...padding.repeat(width)];
     const val = calc(value, width);

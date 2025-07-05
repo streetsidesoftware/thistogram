@@ -78,7 +78,7 @@ export function plotPointRelativeToStandardDeviation(
     const scale = width / (2 * range * sd);
     const diff = point - mean;
     const mid = width >> 1;
-    const f = (v: number) => Math.min(Math.max(0, Math.floor(v * scale + mid + 0.5)), width - 1);
+    const f = (v: number): number => Math.min(Math.max(0, Math.floor(v * scale + mid + 0.5)), width - 1);
 
     const leftMost = f(-2 * sd);
     const rightMost = f(2 * sd);
