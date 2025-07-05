@@ -16,8 +16,8 @@ export enum BoxSymbol {
  * The characters used to draw the box plot.
  * top-left, top-right, bottom-right, bottom-left, vertical, horizontal, left-T, right-T, bottom-T, top-T, cross
  */
-export const boxSymbols = ['┏', '┓', '┛', '┗', '┃', '━', '┣', '┫', '┻', '┳', '╋'];
+export const boxSymbols: string[] = ['┏', '┓', '┛', '┗', '┃', '━', '┣', '┫', '┻', '┳', '╋'];
 
-export const histoCharsBottomToTop = ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
+export const histoCharsBottomToTop: string[] = ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
 
-export const histoCharsLeftToRight = ['▏', '▎', '▍', '▌', '▋', '▊', '▉', '█'];
+export const histoCharsLeftToRight: string[] = ['▏', '▎', '▍', '▌', '▋', '▊', '▉', '█'];

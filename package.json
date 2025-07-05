@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "A simple text based histogram and chart generator",
   "type": "module",
-  "packageManager": "pnpm@8.15.7",
+  "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
   "module": "dist/index.js",
   "exports": {
     ".": "./dist/index.js"
@@ -31,21 +31,16 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.30.1",
-    "@tsconfig/node18": "^18.2.4",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
+    "@tsconfig/node20": "^20.1.6",
     "@vitest/coverage-istanbul": "^3.2.4",
-    "cspell": "^8.19.4",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^5.5.1",
-    "eslint-plugin-promise": "^7.2.1",
+    "cspell": "^9.1.2",
+    "eslint": "^9.30.1",
+    "eslint-plugin-n": "^17.21.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "inject-markdown": "^3.1.4",
+    "inject-markdown": "^4.0.0",
+    "prettier": "^3.6.2",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.1",
     "vitest": "^3.2.4"
   },
   "files": [
@@ -55,6 +50,6 @@
     "!**/*.map.*"
   ],
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.18.0"
   }
 }

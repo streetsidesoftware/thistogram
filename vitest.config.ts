@@ -10,6 +10,7 @@ export default defineConfig({
             reporter: ['html', 'text', 'lcov', 'json'],
             provider: 'istanbul',
             exclude: [
+                '**/*.test.*',
                 'content/**',
                 'fixtures/**',
                 'sample*/**',
