@@ -9,6 +9,6 @@
     "run:temperature": "node temperature.js > ../static/temperature.txt"
   },
   "dependencies": {
-    "thistogram": "link:.."
+    "thistogram": "^2.0.0"
   }
 }
