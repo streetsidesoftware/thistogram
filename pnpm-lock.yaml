@@ -45,12 +45,6 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(yaml@2.8.1)
 
-  samples:
-    dependencies:
-      thistogram:
-        specifier: link:..
-        version: link:..
-
 packages:
 
   '@babel/code-frame@7.27.1':
