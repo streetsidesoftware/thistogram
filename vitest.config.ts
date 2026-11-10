@@ -6,7 +6,7 @@ export default defineConfig({
         coverage: {
             // enabled: true,
             clean: true,
-            all: true,
+            include: ['src/**/*.{ts,mts}'],
             reporter: ['html', 'text', 'lcov', 'json'],
             provider: 'istanbul',
             exclude: [
