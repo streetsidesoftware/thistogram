@@ -12,6 +12,7 @@ on:
 
 jobs:
   update-readme:
+    if: github.repository_owner == 'streetsidesoftware'
     runs-on: ubuntu-latest
     env:
       NEW_BRANCH: readme-${{ inputs.base  || 'main' }}

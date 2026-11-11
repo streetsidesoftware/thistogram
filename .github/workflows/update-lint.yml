@@ -12,6 +12,7 @@ on:
 
 jobs:
   lint:
+    if: github.repository_owner == 'streetsidesoftware'
     runs-on: ubuntu-latest
     env:
       NEW_BRANCH: lint-${{ inputs.base  || 'main' }}
