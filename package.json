@@ -29,6 +29,10 @@
   ],
   "author": "Street Side Software",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/streetsidesoftware/thistogram.git"
+  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@tsconfig/node22": "^22.0.6",
