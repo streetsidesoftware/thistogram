@@ -20,7 +20,7 @@
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
     "spell": "cspell --no-progress .",
-    "run:samples": "cd samples && pnpm add .. && pnpm run:samples",
+    "run:samples": "pnpm -r run:samples",
     "update-readme": "pnpm run:samples && inject-markdown README.md"
   },
   "keywords": [
