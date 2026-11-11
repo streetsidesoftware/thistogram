@@ -17,10 +17,17 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
     steps:
       - uses: actions/checkout@v7
+      # A release PR opened with GITHUB_TOKEN needs approval before its workflows run.
+      - uses: streetsidesoftware/actions/.github/actions/github-app-token@v1
+        id: app-token
+        with:
+          app_id: ${{ secrets.AUTOMATION_APP_ID }}
+          app_private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
       - uses: googleapis/release-please-action@v5
         id: release
         with:
           release-type: 'node'
+          token: ${{ steps.app-token.outputs.token }}
 
   # cspell:ignore noreply
 
