@@ -8,7 +8,7 @@
     "run:table": "node table.js > ../static/table.md",
     "run:temperature": "node temperature.js > ../static/temperature.txt"
   },
-  "dependencies": {
-    "thistogram": "link:.."
+  "devDependencies": {
+    "thistogram": "workspace:*"
   }
 }

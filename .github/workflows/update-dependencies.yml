@@ -41,12 +41,6 @@ jobs:
         run: |
           pnpm up
 
-      - name: Fix Samples
-        run: |
-          cd samples
-          pnpm rm thistogram
-          pnpm add ..
-
       - name: PR Body
         id: body
         uses: streetsidesoftware/actions/public/pr-body@v1
