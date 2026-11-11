@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/streetsidesoftware/thistogram/compare/v2.0.0...v3.0.0) (2026-11-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* Require Node >= 22.18 ([#428](https://github.com/streetsidesoftware/thistogram/issues/428))
+
+### Features
+
+* Require Node &gt;= 22.18 ([#428](https://github.com/streetsidesoftware/thistogram/issues/428)) ([abed567](https://github.com/streetsidesoftware/thistogram/commit/abed5674098df252047ec48c59971a810b5cf06f))
+
 ## [2.0.0](https://github.com/streetsidesoftware/thistogram/compare/v1.1.1...v2.0.0) (2025-07-05)
 
 
