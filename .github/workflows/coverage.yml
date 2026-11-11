@@ -47,6 +47,7 @@ jobs:
         uses: coverallsapp/github-action@8d6379e14d29928660c4ba802d8e85393440b329 # 2.3.8
 
       - name: Upload coverage to Codecov
+        if: github.repository_owner == 'streetsidesoftware'
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
