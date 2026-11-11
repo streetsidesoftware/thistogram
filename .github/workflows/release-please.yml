@@ -29,16 +29,14 @@ jobs:
     needs:
       - release-please
     if: ${{ needs.release-please.outputs.release_created }}
+    permissions:
+      contents: read
+      id-token: write # npm trusted publishing (OIDC), which also signs provenance
     steps:
-      # The logic below handles the npm publication:
       - uses: actions/checkout@v6
       - name: Setup
         uses: ./.github/actions/setup
 
-      - run: |
-          pnpm i
-          pnpm build
+      - run: pnpm build
 
       - run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM}}
