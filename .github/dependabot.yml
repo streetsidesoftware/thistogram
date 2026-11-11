@@ -17,6 +17,10 @@ updates:
       production-dependencies:
         dependency-type: 'production'
         update-types: ['minor', 'patch']
+    ignore:
+      # @types/node follows the oldest Node version in engines, so it moves only when that floor does.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
 
   # Workflows and local actions share one entry, so all action updates arrive as one PR.
   - package-ecosystem: 'github-actions'
