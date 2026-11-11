@@ -1,5 +1,2 @@
 packages:
   - samples
-
-allowBuilds:
-  esbuild: true
