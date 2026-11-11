@@ -1,6 +1,6 @@
 {
   "name": "thistogram",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A simple text based histogram and chart generator",
   "type": "module",
   "packageManager": "pnpm@12.18.0",
