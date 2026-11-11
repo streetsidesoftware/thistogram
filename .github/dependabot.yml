@@ -19,7 +19,6 @@ updates:
         update-types: ['minor', 'patch']
 
   # Workflows and local actions share one entry, so all action updates arrive as one PR.
-  # The Update Dependabot workflow sees these directories covered and leaves this entry alone.
   - package-ecosystem: 'github-actions'
     directories:
       - '/'
